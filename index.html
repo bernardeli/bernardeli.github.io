@@ -1,18 +1,171 @@
-<html>
+<!doctype html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ricardo Bernardeli</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏂%3C/text%3E%3C/svg%3E"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      body, html {
-        height: 100%;
-        display: grid;
-        background-color: black;
+      * {
+        box-sizing: border-box;
       }
-      span {
-        margin: auto;
-        font-size: 15em;
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2.5rem 1.25rem;
+        background: #000;
+        color: #f7f2f6;
+        font-family: "Source Serif 4", serif;
+      }
+
+      .welcome {
+        width: min(860px, 100%);
+        padding: clamp(0.2rem, 1vw, 0.8rem);
+      }
+
+      h1,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        font-weight: 500;
+        line-height: 1.05;
+        font-size: clamp(2rem, 6vw, 4.2rem);
+        letter-spacing: -0.01em;
+      }
+
+      p {
+        margin-top: 1.15rem;
+        max-width: 62ch;
+        font-size: clamp(1.02rem, 2vw, 1.3rem);
+        line-height: 1.65;
+        color: #f5d9ea;
+      }
+
+      .where {
+        margin-top: 1rem;
+        font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+        color: #d6b2c9;
+      }
+
+      .where a {
+        color: inherit;
+      }
+
+      .social {
+        margin-top: 0.8rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem 1rem;
+      }
+
+      .social a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        color: #d6b2c9;
+        text-decoration: none;
+        font-size: clamp(0.9rem, 1.4vw, 1rem);
+      }
+
+      .social a:hover {
+        color: #f5d9ea;
+      }
+
+      .social svg {
+        width: 17px;
+        height: 17px;
+        fill: currentColor;
+      }
+
+      .note {
+        margin-top: 1.1rem;
+        font-size: 0.78rem;
+        letter-spacing: 0.01em;
+        color: transparent;
+        background: linear-gradient(
+          100deg,
+          #b58ea6 0%,
+          #f7d1ea 45%,
+          #9ee4c0 55%,
+          #b58ea6 100%
+        );
+        background-size: 240% 100%;
+        background-position: 120% 0;
+        -webkit-background-clip: text;
+        background-clip: text;
+        animation: note-sweep 3s linear infinite;
+      }
+
+      @keyframes note-sweep {
+        from {
+          background-position: 120% 0;
+        }
+        to {
+          background-position: -120% 0;
+        }
       }
     </style>
   </head>
   <body>
-    <span>😌 </span>
+    <section class="welcome" aria-label="Welcome">
+      <h1>Hey, I'm Ricardo Bernardeli.</h1>
+      <p>
+        I work at the intersection of product thinking, software engineering, and
+        practical business outcomes at scale. Pragmatic at heart, I focus on
+        shipping meaningful solutions that are fast, useful, and easy to
+        understand.
+      </p>
+      <p class="where">
+        Principal Software Engineer @
+        <a href="https://thelookoutway.com/" target="_blank" rel="noopener noreferrer">The Lookout Way</a>
+      </p>
+      <div class="social" aria-label="Social links">
+        <a href="https://www.linkedin.com/in/bernardeli/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M19 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM8.34 18H5.67V9.66h2.67V18zM7 8.52a1.55 1.55 0 1 1 0-3.1 1.55 1.55 0 0 1 0 3.1zM18.33 18h-2.66v-4.06c0-.97-.02-2.22-1.35-2.22-1.35 0-1.56 1.05-1.56 2.15V18H10.1V9.66h2.55v1.14h.04c.35-.68 1.22-1.39 2.5-1.39 2.68 0 3.18 1.77 3.18 4.07V18z"/>
+          </svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/bernardeli/" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 .5C5.65.5.5 5.66.5 12.02c0 5.09 3.29 9.4 7.86 10.93.57.1.77-.25.77-.55v-1.94c-3.2.69-3.88-1.54-3.88-1.54-.52-1.34-1.28-1.69-1.28-1.69-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.78 2.7 1.27 3.36.97.1-.75.4-1.27.73-1.56-2.56-.29-5.25-1.29-5.25-5.72 0-1.26.45-2.3 1.2-3.12-.12-.29-.52-1.45.11-3.03 0 0 .98-.31 3.2 1.19a11.07 11.07 0 0 1 5.82 0c2.21-1.5 3.19-1.19 3.19-1.19.64 1.58.24 2.74.12 3.03.75.82 1.2 1.86 1.2 3.12 0 4.44-2.7 5.43-5.28 5.71.41.36.78 1.06.78 2.14v3.17c0 .31.2.66.78.55A11.53 11.53 0 0 0 23.5 12C23.5 5.66 18.35.5 12 .5z"/>
+          </svg>
+          GitHub
+        </a>
+        <a href="mailto:hi@bernardeli.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 5.5A2.5 2.5 0 0 1 5.5 3h13A2.5 2.5 0 0 1 21 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 18.5v-13zm2 1.15V18h14V6.65l-7 5.34-7-5.34zm13.48-1.65H5.52L12 9.95 18.48 5z"/>
+          </svg>
+          hi@bernardeli.com
+        </a>
+      </div>
+      <p class="note">you're worthy and awesome :)</p>
+    </section>
   </body>
 </html>
