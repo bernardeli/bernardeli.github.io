@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nicholas Bernardeli</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%AE%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1.25rem;
+        font-family: "Baloo 2", sans-serif;
+        color: #eaf5ff;
+        background: radial-gradient(circle at 20% 20%, #2f76ff 0%, #0f2f7d 42%, #091128 100%);
+      }
+
+      .welcome {
+        width: min(880px, 100%);
+        padding: clamp(0.3rem, 1.5vw, 1rem);
+      }
+
+      h1,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        font-size: clamp(2.1rem, 7vw, 4.6rem);
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        line-height: 1.02;
+      }
+
+      p {
+        margin-top: 1rem;
+        max-width: 64ch;
+        font-size: clamp(1.02rem, 2.1vw, 1.35rem);
+        line-height: 1.55;
+        color: #cde3ff;
+      }
+
+      .highlights {
+        margin-top: 1.2rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+      }
+
+      .chip {
+        border: 1px solid #7ec3ff;
+        background: rgba(7, 31, 82, 0.45);
+        color: #eaf5ff;
+        border-radius: 999px;
+        padding: 0.35rem 0.8rem;
+        font-size: clamp(0.86rem, 1.6vw, 1rem);
+        letter-spacing: 0.01em;
+        position: relative;
+        cursor: pointer;
+        font-family: inherit;
+      }
+
+      .rocket-button {
+        transition: transform 180ms ease;
+      }
+
+      .rocket-button:hover,
+      .rocket-button:focus-visible {
+        animation: boost 620ms ease;
+      }
+
+      .rocket-button::after {
+        content: "WHAT A SAVE!";
+        position: absolute;
+        left: 50%;
+        top: -1.95rem;
+        transform: translateX(-50%) scale(0.75);
+        opacity: 0;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        white-space: nowrap;
+        color: #ffe873;
+        text-shadow: 0 1px 0 #3d2f00;
+        pointer-events: none;
+      }
+
+      .rocket-button:hover::after,
+      .rocket-button:focus-visible::after {
+        animation: shout 620ms ease;
+      }
+
+      .football-button:hover,
+      .football-button:focus-visible {
+        animation: kick 560ms ease;
+      }
+
+      .football-button::after {
+        content: "GOOOAL! ⚽";
+        position: absolute;
+        left: 50%;
+        top: -1.95rem;
+        transform: translateX(-50%) scale(0.7);
+        opacity: 0;
+        font-weight: 700;
+        white-space: nowrap;
+        color: #9dff9f;
+        text-shadow: 0 1px 0 #00350c;
+        pointer-events: none;
+      }
+
+      .football-button:hover::after,
+      .football-button:focus-visible::after {
+        animation: shout 620ms ease;
+      }
+
+      .goals-button:hover,
+      .goals-button:focus-visible {
+        animation: pop-jump 650ms ease;
+      }
+
+      .goals-button::after {
+        content: "LEVEL UP!";
+        position: absolute;
+        left: 50%;
+        top: -1.95rem;
+        transform: translateX(-50%) scale(0.75);
+        opacity: 0;
+        font-weight: 700;
+        white-space: nowrap;
+        color: #ffcf66;
+        text-shadow: 0 1px 0 #5b3500;
+        pointer-events: none;
+      }
+
+      .goals-button:hover::after,
+      .goals-button:focus-visible::after {
+        animation: shout 620ms ease;
+      }
+
+      .team-button:hover,
+      .team-button:focus-visible {
+        animation: wiggle 520ms ease;
+      }
+
+      .team-button::after {
+        content: "HIGH FIVE! ✋";
+        position: absolute;
+        left: 50%;
+        top: -1.95rem;
+        transform: translateX(-50%) scale(0.75);
+        opacity: 0;
+        font-weight: 700;
+        white-space: nowrap;
+        color: #ffb8f7;
+        text-shadow: 0 1px 0 #5a0b49;
+        pointer-events: none;
+      }
+
+      .team-button:hover::after,
+      .team-button:focus-visible::after {
+        animation: shout 620ms ease;
+      }
+
+      @keyframes boost {
+        0% {
+          transform: translateX(0) rotate(0deg);
+        }
+        35% {
+          transform: translateX(14px) rotate(4deg);
+        }
+        70% {
+          transform: translateX(-6px) rotate(-2deg);
+        }
+        100% {
+          transform: translateX(0) rotate(0deg);
+        }
+      }
+
+      @keyframes shout {
+        0% {
+          transform: translateX(-50%) scale(0.75);
+          opacity: 0;
+        }
+        30% {
+          transform: translateX(-50%) scale(1.1);
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(-50%) scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes kick {
+        0% {
+          transform: translateX(0) rotate(0deg);
+        }
+        35% {
+          transform: translateX(10px) rotate(-7deg);
+        }
+        70% {
+          transform: translateX(-4px) rotate(4deg);
+        }
+        100% {
+          transform: translateX(0) rotate(0deg);
+        }
+      }
+
+      @keyframes pop-jump {
+        0% {
+          transform: translateY(0) scale(1);
+        }
+        30% {
+          transform: translateY(-8px) scale(1.06);
+        }
+        70% {
+          transform: translateY(2px) scale(0.98);
+        }
+        100% {
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @keyframes wiggle {
+        0% {
+          transform: rotate(0deg);
+        }
+        25% {
+          transform: rotate(3deg);
+        }
+        50% {
+          transform: rotate(-3deg);
+        }
+        75% {
+          transform: rotate(2deg);
+        }
+        100% {
+          transform: rotate(0deg);
+        }
+      }
+
+      .note {
+        margin-top: 1.3rem;
+        font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+        color: #9fd4ff;
+      }
+
+      .fun-link {
+        color: #d8eeff;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 3px;
+      }
+
+      .fun-link:hover,
+      .fun-link:focus-visible {
+        color: #ffffff;
+      }
+
+      .fx-trail {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .flying-item {
+        position: fixed;
+        left: 0;
+        top: 0;
+        font-size: clamp(1.1rem, 2vw, 1.8rem);
+        will-change: transform, opacity;
+        animation: fly-item var(--duration, 1100ms) cubic-bezier(0.2, 0.78, 0.28, 1) forwards;
+        animation-delay: var(--delay, 0ms);
+        filter: drop-shadow(0 0 6px var(--glow, rgba(255, 184, 92, 0.65)));
+      }
+
+      @keyframes fly-item {
+        0% {
+          transform: translate(var(--start-x), var(--start-y)) rotate(-20deg) scale(0.8);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        70% {
+          opacity: 1;
+        }
+        100% {
+          transform: translate(var(--end-x), var(--end-y)) rotate(20deg) scale(1.2);
+          opacity: 0;
+        }
+      }
+
+      .big-67 {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(0.65);
+        font-size: clamp(6rem, 24vw, 18rem);
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: 0.02em;
+        color: #ffffff;
+        text-shadow: 0 0 18px rgba(170, 214, 255, 0.85), 0 0 42px rgba(76, 160, 255, 0.7);
+        pointer-events: none;
+        animation: big-67-fade 3s ease forwards;
+        z-index: 20;
+      }
+
+      @keyframes big-67-fade {
+        0% {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.65);
+        }
+        18% {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(1.06);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="welcome" aria-label="Welcome">
+      <h1>Hey, I'm Nicholas Bernardeli.</h1>
+      <p>
+        I am 8 years old and I love games and sports. My favorite game is Rocket
+        League because fast cars and awesome goals are the best. I also love
+        football and having fun with my team.
+      </p>
+      <div class="highlights" aria-label="Interests">
+        <button class="chip rocket-button" type="button">Rocket League</button>
+        <button class="chip football-button" type="button">Football</button>
+        <button class="chip goals-button" type="button">Big Goals</button>
+        <button class="chip team-button" type="button">Team Spirit</button>
+      </div>
+      <p class="note">
+        Play hard. Be kind.
+        <a class="fun-link" href="#" id="fun-link">Have fun.</a>
+      </p>
+    </section>
+    <div class="fx-trail" aria-hidden="true"></div>
+    <script>
+      const rocketButton = document.querySelector(".rocket-button");
+      const footballButton = document.querySelector(".football-button");
+      const goalsButton = document.querySelector(".goals-button");
+      const teamButton = document.querySelector(".team-button");
+      const funLink = document.querySelector("#fun-link");
+      const fxTrail = document.querySelector(".fx-trail");
+
+      function launchBurst(button, icon, count, glowColor) {
+        const rect = button.getBoundingClientRect();
+        const startX = rect.left + rect.width / 2;
+        const startY = rect.top + rect.height / 2;
+
+        for (let i = 0; i < count; i += 1) {
+          const item = document.createElement("span");
+          const spreadY = (Math.random() - 0.5) * 220;
+          const endX = window.innerWidth + 80;
+          const endY = Math.max(20, Math.min(window.innerHeight - 20, startY + spreadY));
+          const delay = i * 60;
+          const duration = 920 + Math.random() * 420;
+
+          item.className = "flying-item";
+          item.textContent = icon;
+          item.style.setProperty("--start-x", `${startX}px`);
+          item.style.setProperty("--start-y", `${startY}px`);
+          item.style.setProperty("--end-x", `${endX}px`);
+          item.style.setProperty("--end-y", `${endY}px`);
+          item.style.setProperty("--delay", `${delay}ms`);
+          item.style.setProperty("--duration", `${duration}ms`);
+          item.style.setProperty("--glow", glowColor);
+
+          fxTrail.appendChild(item);
+          item.addEventListener("animationend", () => item.remove(), { once: true });
+        }
+      }
+
+      function speakSixtySeven() {
+        if (!("speechSynthesis" in window)) {
+          return;
+        }
+
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance("sixty seven");
+        utterance.lang = "en-US";
+        utterance.rate = 0.95;
+        utterance.pitch = 1.05;
+        window.speechSynthesis.speak(utterance);
+      }
+
+      rocketButton.addEventListener("click", () => launchBurst(rocketButton, "🚀", 8, "rgba(255, 184, 92, 0.65)"));
+      footballButton.addEventListener("click", () => launchBurst(footballButton, "⚽", 8, "rgba(157, 255, 159, 0.7)"));
+      goalsButton.addEventListener("click", () => launchBurst(goalsButton, "⭐", 8, "rgba(255, 207, 102, 0.7)"));
+      teamButton.addEventListener("click", () => launchBurst(teamButton, "👏", 8, "rgba(255, 184, 247, 0.7)"));
+
+      funLink.addEventListener("click", (event) => {
+        event.preventDefault();
+        speakSixtySeven();
+        const big67 = document.createElement("div");
+        big67.className = "big-67";
+        big67.textContent = "67";
+        document.body.appendChild(big67);
+        big67.addEventListener("animationend", () => big67.remove(), { once: true });
+      });
+    </script>
+  </body>
+</html>
